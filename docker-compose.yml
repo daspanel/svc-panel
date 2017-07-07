@@ -1,0 +1,23 @@
+version: '2'
+services:
+    daspanel-panel:
+        image: daspanel/svc-panel-dev
+        volumes:
+            - ./data:/opt/daspanel/data
+        networks:
+            - frontend
+            - backend
+        environment:
+            - GUNICORN_APP_DIR=/opt/daspanel/apps/panel/daspanel_web
+            - GUNICORN_CMD=su-exec daspanel:daspanel python /opt/daspanel/apps/panel/wsgi.py
+        env_file:
+            - daspanel.env
+        expose:
+            - "8080"
+networks:  
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+

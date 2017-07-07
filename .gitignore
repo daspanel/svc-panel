@@ -141,3 +141,4 @@ tools/bump
 tools/github-release
 dist/
 build/
+data/
