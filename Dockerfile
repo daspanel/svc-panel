@@ -7,14 +7,14 @@ ARG VCS_URL
 ARG VCS_REF
 ARG BUILD_DATE
 ARG S6_OVERLAY_VERSION=v1.19.1.1
-ARG DASPANEL_IMG_NAME=svc-api
+ARG DASPANEL_IMG_NAME=svc-panel
 ARG DASPANEL_OS_VERSION=alpine3.6
 ARG PYTHON_VERSION=2.7
 
 # Parse Container specific arguments for the build command.
-ARG CADDY_PLUGINS="http.cors,http.expires,http.ipfilter,http.ratelimit,http.realip"
-ARG CADDY_URL="https://caddyserver.com/download/linux/amd64?plugins=${CADDY_PLUGINS}"
-ARG INSTALL_PATH=/opt/daspanel/apps/apiserver
+#ARG CADDY_PLUGINS="http.cors,http.expires,http.ipfilter,http.ratelimit,http.realip"
+#ARG CADDY_URL="https://caddyserver.com/download/linux/amd64?plugins=${CADDY_PLUGINS}"
+ARG INSTALL_PATH=/opt/daspanel/apps/panel
 
 # Set default env variables
 ENV \
@@ -34,8 +34,8 @@ LABEL org.label-schema.schema-version="1.0" \
       org.label-schema.version=$VERSION \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.name="daspanel/svc-api" \
-      org.label-schema.description="Docker container running Daspanel API server."
+      org.label-schema.name="daspanel/svc-panel" \
+      org.label-schema.description="Docker container running Daspanel web panel server."
 
 # Inject files in container file system
 COPY rootfs /
@@ -75,13 +75,13 @@ RUN set -x \
 
     # Install software
     && mkdir -p ${INSTALL_PATH} \
-    && wget --no-check-certificate -O /tmp/api-src.zip https://github.com/daspanel/api-server/archive/master.zip \
-    && unzip -o -d /tmp /tmp/api-src.zip \
-    && mv /tmp/api-server-master/api_server ${INSTALL_PATH}/. \
-    && mv /tmp/api-server-master/requirements ${INSTALL_PATH}/. \
+    && wget --no-check-certificate -O /tmp/panel-src.zip https://github.com/daspanel/panel/archive/master.zip \
+    && unzip -o -d /tmp /tmp/panel-src.zip \
+    && mv /tmp/panel-master/daspanel_web ${INSTALL_PATH}/. \
+    && mv /tmp/panel-master/config.py /tmp/panel-master/wsgi.py /tmp/panel-master/requirements.txt ${INSTALL_PATH}/. \
 
     # Install pip packages needed by the software
-    && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/20_pip${PYTHON_VERSION}_install "-r ${INSTALL_PATH}/requirements/dev.txt " \
+    && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/20_pip${PYTHON_VERSION}_install "-r ${INSTALL_PATH}/requirements.txt " \
 
     # Remove build environment packages
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/09_cleanbuildenv \
