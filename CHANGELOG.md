@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.1.2 (2017-08-01)
+
+### Other
+
+* Better startup notification email. [Abner G Jacobsen]
+
+
 ## 0.1.1 (2017-07-07)
 
 ### Other
