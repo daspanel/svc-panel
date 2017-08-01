@@ -69,6 +69,31 @@ while [  $COUNT -lt $MAX_TRIES ]; do
 	    echo "   $DASPANEL_SYS_PASSWORD";
 	    echo "";
 	    echo "";
+	    echo "Mail Catcher:";
+	    echo "   https://mail.svc.$DASPANEL_SYS_HOSTNAME";
+        echo "      User: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.smtp.user')";
+        echo "      Password: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.smtp.password')";
+	    echo ""; 
+	    echo "Database Management:";
+	    echo "   https://adminer.svc.$DASPANEL_SYS_HOSTNAME/?server=$(echo $SYSCFG | /opt/daspanel/bin/jq -r '.mysql.server')";
+        echo "      Server: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.mysql.server')";
+        echo "      User: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.mysql.user')";
+        echo "      Password: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.mysql.password')";
+	    echo ""; 
+	    echo "File Manager:";
+	    echo "   https://s3.svc.$DASPANEL_SYS_HOSTNAME";
+        echo "      User: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.s3.access_key')";
+        echo "      Password: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.s3.secret_key')";
+	    echo ""; 
+	    echo "S3 Endpoint:";
+	    echo "   https://s3.svc.$DASPANEL_SYS_HOSTNAME";
+        echo "      User: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.s3.access_key')";
+        echo "      Password: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.s3.secret_key')";
+        echo "      Url: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.s3.endpoint')";
+        echo "      Region: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.s3.region')";
+        echo "      Bucket: $DASPANEL_SYS_UUID";
+	    echo ""; 
+	    echo ""; 
 	    echo "X-Api-Key:";
 	    echo "   $DASPANEL_SYS_UUID";
 	    echo ""; 
@@ -78,17 +103,6 @@ while [  $COUNT -lt $MAX_TRIES ]; do
 	    echo "API Docs Url:";
 	    echo "   $DASPANEL_API_DOCS";
 	    echo ""; 
-	    echo "";
-	    if [ -f /opt/daspanel/data/$DASPANEL_SYS_UUID/containers/mysql.configured ]; then
-	        echo "*** MYSQL CONFIG ***";
-	        echo "$(cat /opt/daspanel/data/$DASPANEL_SYS_UUID/containers/mysql.configured)";
-	    fi
-	    echo ""; 
-	    echo "";
-	    if [ -f /opt/daspanel/data/$DASPANEL_SYS_UUID/containers/s3.configured ]; then
-	        echo "*** S3 CONFIG ***";
-	        echo "$(cat /opt/daspanel/data/$DASPANEL_SYS_UUID/containers/s3.configured)";
-	    fi
 	    echo "";
 	    echo "";
 	    echo "*** DASPANEL System Config ***";
