@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.1.3 (2017-08-04)
+
+### Other
+
+* Added info about how to login to the new file manager. [Abner G Jacobsen]
+
+
 ## 0.1.2 (2017-08-01)
 
 ### Other
