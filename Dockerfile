@@ -78,7 +78,7 @@ RUN set -x \
     && wget --no-check-certificate -O /tmp/panel-src.zip https://github.com/daspanel/panel/archive/master.zip \
     && unzip -o -d /tmp /tmp/panel-src.zip \
     && mv /tmp/panel-master/daspanel_web ${INSTALL_PATH}/. \
-    && mv /tmp/panel-master/config.py /tmp/panel-master/wsgi.py /tmp/panel-master/requirements.txt ${INSTALL_PATH}/. \
+    && mv /tmp/panel-master/requirements.txt ${INSTALL_PATH}/. \
 
     # Install pip packages needed by the software
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/20_pip${PYTHON_VERSION}_install "-r ${INSTALL_PATH}/requirements.txt " \
