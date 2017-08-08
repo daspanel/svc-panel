@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.1.4 (2017-08-08)
+
+### Other
+
+* Changed way the service initialized to use gunicorn. [Abner G Jacobsen]
+
+
 ## 0.1.3 (2017-08-04)
 
 ### Other
