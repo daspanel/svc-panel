@@ -82,8 +82,8 @@ while [  $COUNT -lt $MAX_TRIES ]; do
 	    echo ""; 
 	    echo "File Manager:";
 	    echo "   https://fm.svc.$DASPANEL_SYS_HOSTNAME";
-        echo "      User: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.sys.admin')";
-        echo "      Password: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.sys.password')";
+        echo "      User: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.filemanager.user')";
+        echo "      Password: $(echo $SYSCFG | /opt/daspanel/bin/jq -r '.filemanager.password')";
 	    echo ""; 
 	    echo "S3 file manager:";
 	    echo "   https://s3.svc.$DASPANEL_SYS_HOSTNAME";
