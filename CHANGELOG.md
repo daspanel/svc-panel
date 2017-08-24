@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.2.0 (2017-08-24)
+
+### Other
+
+* Added Filemanager own user. [Abner G Jacobsen]
+
+
 ## 0.1.4 (2017-08-08)
 
 ### Other
