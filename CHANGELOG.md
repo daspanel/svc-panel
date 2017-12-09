@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.2.1 (2017-12-09)
+
+### Other
+
+* Added default configuration information for the user with console access rights. [Abner G Jacobsen]
+
+
 ## 0.2.0 (2017-08-24)
 
 ### Other
